@@ -52,9 +52,9 @@ defmodule SchoolTest do
     assert [] == School.grade(db, :grade_1)
   end
 
-  @tag :pending
   test "sort school by grade and by student name" do
     actual = db
+     |> School.add("John", :grade_10)
      |> School.add("Bart", :grade_4)
      |> School.add("Jennifer", :grade_4)
      |> School.add("Christopher", :grade_4)
@@ -65,7 +65,8 @@ defmodule SchoolTest do
     expected = [
      grade_3: ["Kyle"],
      grade_4: ["Bart", "Christopher", "Jennifer"],
-     grade_6: ["Kareem"]
+     grade_6: ["Kareem"],
+     grade_10: ["John"]
     ]
 
     assert expected == actual
