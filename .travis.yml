@@ -2,6 +2,7 @@ language: elixir
 elixir:
   - 1.4.5
   - 1.5.2
+  - 1.6.0
 
 otp_release:
   - 19.3
@@ -12,6 +13,7 @@ script:
 - bin/configlet lint .
 - mix deps.get
 - mix test
+- if [[ ${TRAVIS_ELIXIR_VERSION} == "1.6.0" ]]; then mix format --check-formatted; fi;
 
 # fail if there are any compiler warnings
 - mkdir ./tmp
